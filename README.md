@@ -66,6 +66,34 @@ https://raw.githubusercontent.com/lin686/legado-comic-sources/main/legado-comic-
 > 若 `raw.githubusercontent.com` 在你的网络下不可达，可改用 GitHub API 通道：
 > `gh api repos/lin686/legado-comic-sources/contents/legado-comic-sources-merged.json -H "Accept: application/vnd.github.raw+json"`
 
+### 国内加速链接（免代理，2026-10-15 无代理直连实测）
+
+`raw.githubusercontent.com` 在国内被 DNS 污染 / 连接重置，导致「网络导入」失败（实测直连报 `WinError 10054 远程主机强迫关闭了一个现有的连接`）。**改用下面的加速通道即可免代理直连**（已在禁用代理的情况下逐条验证，均成功返回完整 104 条）：
+
+| 通道 | 链接 | 实测耗时 |
+| --- | --- | --- |
+| jsDelivr (Fastly) | `https://fastly.jsdelivr.net/gh/lin686/legado-comic-sources@main/<文件名>` | 1.3s |
+| ghfast.top | `https://ghfast.top/` + 原始 raw 链接 | 1.6s |
+| jsDelivr (Cloudflare) | `https://cdn.jsdelivr.net/gh/lin686/legado-comic-sources@main/<文件名>` | 2.6s |
+| gh-proxy.com | `https://gh-proxy.com/` + 原始 raw 链接 | 2.9s |
+| ghproxy.net | `https://ghproxy.net/` + 原始 raw 链接 | 3.0s |
+| jsDelivr (CF 备用) | `https://testingcf.jsdelivr.net/gh/lin686/legado-comic-sources@main/<文件名>` | 3.9s |
+| jsDelivr (Gcore) | `https://gcore.jsdelivr.net/gh/lin686/legado-comic-sources@main/<文件名>` | 5.7s |
+
+直接可用示例（合并增强版 104 条，复制任意一条粘贴到「网络导入」）：
+
+```
+https://ghfast.top/https://raw.githubusercontent.com/lin686/legado-comic-sources/main/legado-comic-sources-merged.json
+```
+
+```
+https://cdn.jsdelivr.net/gh/lin686/legado-comic-sources@main/legado-comic-sources-merged.json
+```
+
+> 注意：**网络导入请只用明文 JSON**。`.compressed.json` 的 zlib+Base64 格式是第三方分享站自有格式，阅读 App 原生不认。
+>
+> 若所有加速通道仍不可用，可把 JSON 下载到手机后用「书源管理 → 右上角 → 本地导入」。
+
 ## 命令行拉取
 
 ```bash
